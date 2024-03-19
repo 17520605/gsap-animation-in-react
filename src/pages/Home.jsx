@@ -1,5 +1,6 @@
+import { useGSAP } from "@gsap/react";
 import { Link } from "react-router-dom";
-
+import gsap from "gsap";
 const animations = [
   {
     title: "GSAP To",
@@ -45,15 +46,28 @@ const animations = [
 ];
 
 const Home = () => {
+  // TODO: Implement home page
+  useGSAP(() => {
+    gsap.fromTo(".item-menu",
+      {
+        opacity: 0,
+        x: 20,
+      },
+      {
+        opacity: 1,
+        stagger: 0.2,
+        x: 0,
+      });
+  });
   return (
     <main className="container">
       <div className="flex flex-col">
         <h1 className="text-3xl font-bold text-zinc-50 text-center">GSAP Animations Configs</h1>
-        <ol className="flex flex-col mt-10">
+        <ol className="flex flex-col mt-10 ">
           {animations.map((animation, index) => (
             <li
               key={index}
-              className="flex flex-row gap-5 p-5 hover:bg-zinc-800/50 rounded-lg"
+              className="flex flex-row gap-5 p-5 hover:bg-zinc-800/50 rounded-lg item-menu"
             >
               <p>
                 <span className="text-sm font-bold text-zinc-50">
